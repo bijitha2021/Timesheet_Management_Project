@@ -36,3 +36,13 @@ def user_new(request):
         form = UserForm()
         return render(request, 'userManagement/user_new.html', {'form1': form})
 
+def user_update(request, user_id):
+    user = get_object_or_404(User, pk=user_id)
+    form = UserForm(request.POST or None, instance=user)
+    if request.method == "POST":
+        if form.is_valid():
+            user = form.save()
+            user.save()
+            return HttpResponseRedirect(reverse('userManagement:user_list'))
+    else:
+        return render(request, 'userManagement/user_update.html', {'form': form})
