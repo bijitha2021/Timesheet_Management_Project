@@ -5,10 +5,15 @@
     <title>Title</title>
 </head>
 <body>
+<a href="{% url 'userManagement:user_new' %}">Add user</a>
+<table>
+
 {% for p in object_list %}
-{{p.firstname}}<br>
+
+<tr><td><a href="{% url 'userManagement:user_update' user.id %}">{{p.firstname}}</a></td><td>&nbsp;</td> <td>   {{p.description}}</td></tr>
 
 {% endfor %}
+</table>
 </body>
 
 </body>

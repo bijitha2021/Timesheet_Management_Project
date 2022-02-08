@@ -2,9 +2,9 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from userManagement.models import User
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import ListView, DetailView, CreateView,UpdateView
 from userManagement.forms import UserForm
 
 # Create your views here.
@@ -27,7 +27,6 @@ def user_new(request):
 
         if form.is_valid():
             user = form.save(commit=False)
-
             user.save()
             return HttpResponseRedirect(reverse('userManagement:user_list'))
         else:
@@ -35,6 +34,16 @@ def user_new(request):
     else:
         form = UserForm()
         return render(request, 'userManagement/user_new.html', {'form1': form})
+
+
+
+class UserCreate(CreateView):
+    model = User
+    fields = ['firstname', 'lastname', 'description','email','password']
+    template_name = 'userManagement/user_new.html'
+    success_url = reverse_lazy('userManagement:user_list')
+
+
 
 def user_update(request, user_id):
     user = get_object_or_404(User, pk=user_id)
@@ -46,3 +55,10 @@ def user_update(request, user_id):
             return HttpResponseRedirect(reverse('userManagement:user_list'))
     else:
         return render(request, 'userManagement/user_update.html', {'form': form})
+
+
+class UserUpdate(UpdateView):
+    model = User
+    fields = ['firstname', 'lastname', 'description','email','password']
+    template_name = 'userManagement/user_update.html'
+    success_url = reverse_lazy('userManagement:user_list')

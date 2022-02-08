@@ -6,8 +6,10 @@
 </head>
 <body>
  <form method="post" action="{% url 'userManagement:user_new' %}">
+
         {% csrf_token %}
-        {{ form1.as_p }}
+        {% csrf_token %}
+        {{ form.as_p }}
         <button type="submit" value="Save">Save</button>
         <a href="{% url 'userManagement:user_list' %}" > Cancel </a>
     </form>
