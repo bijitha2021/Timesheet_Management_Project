@@ -21,7 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-i2@e^6#(@!x@bgdeiwq1mf9t%c#0p6p!hwt43azlu-7sk4#*q4'
+SECRET_KEY = 'django-insecure-(lxiyx*ms^ld$a&t84r!1)qbe7pg^_gn4xn4%v59*-7a-n&c(u'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'userManagement',
-    #'workdayManagement',
+    'workdayManagement',
 ]
 
 MIDDLEWARE = [
@@ -121,6 +121,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = '/static/'
+LOGIN_REDIRECT_URL='/users/'
+
+
+MEDIA_ROOT =  os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field

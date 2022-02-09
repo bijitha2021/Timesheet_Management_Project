@@ -38,8 +38,10 @@ def user_new(request):
 
 
 class UserCreate(CreateView):
-    model = User
-    fields = ['firstname', 'lastname', 'description','email','password']
+    #model = User
+    form_class = UserForm
+
+   # fields = [ 'description','image']#'firstname', 'lastname',,'email','password'
     template_name = 'userManagement/user_new.html'
     success_url = reverse_lazy('userManagement:user_list')
 
