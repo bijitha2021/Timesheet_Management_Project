@@ -1,9 +1,32 @@
+{% extends '../base_timesheet.html' %}
+
+{% block title %}Restaurant List{% endblock title %}
+
+{% block content %}
+    {% if user %}<a href="{% url 'userManagement:user_new' %}">Add User</a>{% endif %}
+    {% if user_list %}
+        <table>
+        {% for user in user_list %}
+
+            <tr><td>&nbsp;&nbsp;&nbsp;</td><td><a href="{% url 'userManagement:user_update' user.id %}">{{p.firstname}}</a></td><td>&nbsp;</td> <td>   {{p.description}}</td></tr>
+
+        {% endfor %}
+        </table>
+    {% else %}
+        <p>No Users are available.</p>
+    {% endif %}
+{% endblock content %}
+
+
+<!--
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
+
 <body>
 <a href="{% url 'userManagement:user_new' %}">Add user</a>
 <table>
@@ -18,3 +41,4 @@
 
 </body>
 </html>
+---!>
