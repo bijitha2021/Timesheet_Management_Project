@@ -1,4 +1,21 @@
-<!DOCTYPE html>
+{% extends '../base_timesheet.html' %}
+{% block title %}Add User{% endblock title %}
+
+{% block content %}
+   <form method="post" action="" class="post-form" enctype="multipart/form-data">
+        {% csrf_token %}
+        <table>
+           {{ form.as_p }}
+        </table>
+        <button type="submit" value="Save">Save</button>
+        <a href="{% url 'userManagement:user_list' %}" > Cancel </a>
+    </form>
+{% endblock content %}
+
+
+
+
+<!---<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -14,4 +31,4 @@
         <a href="{% url 'userManagement:user_list' %}" > Cancel </a>
     </form>
 </body>
-</html>
+</html>--->
