@@ -26,7 +26,7 @@ class AuthUserCreateForm(UserCreationForm):
     password = forms.CharField(max_length=30, required=False)
     class Meta:
         model = User
-        fields = ('firstname', 'lastname', 'email', 'password', 'username')
+        fields = ('firstname', 'lastname', 'email', 'password', 'username','is_superuser','is_staff','is_active','date_joined')
 
 
 class DoctorCreateForm(forms.ModelForm):
