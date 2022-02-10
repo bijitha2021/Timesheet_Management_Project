@@ -27,19 +27,21 @@ class UserDetail(DetailView):
 def user_new(request):
     if request.method == "POST":
         # form = UserForm(request.POST)
-        authuser = AuthUserCreateForm(request.POST)
-        doctform = DoctorCreateForm(request.POST)
+        authuserform = AuthUserCreateForm(request.POST)
+        doctorform = DoctorCreateForm(request.POST)
 
-        if authuser.is_valid() and doctform.is_valid():
-            user = authuser.save()
-            doctform.user = user
-            doctform.save()
+        if authuserform.is_valid() and doctorform.is_valid():
+            user = authuserform.save()            
+            doctor = doctorform.save(commit=False)
+            doctor.user = user
+            doctorform.save()
             return HttpResponseRedirect(reverse('userManagement:user_list'))
         else:
-            return render(request, 'userManagement/user_new.html', {'form': doctform})
+            return render(request, 'userManagement/user_new.html', {'authuserform': authuserform, 'doctorform': doctorform})
     else:
-        form = UserForm()
-        return render(request, 'userManagement/user_new.html', {'form': form})
+        authuserform = AuthUserCreateForm()
+        doctorform = DoctorCreateForm()
+        return render(request, 'userManagement/user_new.html', {'authuserform': authuserform, 'doctorform': doctorform}) # template will receive these 2 forms 
 
 
 class UserCreate(CreateView):
