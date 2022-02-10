@@ -7,12 +7,13 @@
     {% if object_list %}
         <table>
         {% for user in object_list %}
+            <tr><img src="{{user.image}}" width="120"></tr>
 
-            <tr><td>&nbsp;&nbsp;&nbsp;</td><td></td><td>&nbsp;</td> <td>{{user.description}}</td>
+            <tr><td>&nbsp;&nbsp;&nbsp;</td><td></td><td>&nbsp;</td> <td>{{user.username}}</td></tr>
 
-            <img src="/userManagement/leaf_chart.jpg" width="120">
 
-            </tr>
+
+
 
         {% endfor %}
         </table>

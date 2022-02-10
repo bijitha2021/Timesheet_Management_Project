@@ -1,7 +1,11 @@
+from itertools import chain
+from operator import attrgetter
+
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
+from django.contrib.auth.models import User
 
 from django.urls import reverse, reverse_lazy
 from userManagement.models import Doctor
@@ -13,9 +17,15 @@ from userManagement.forms import AuthUserCreateForm, DoctorCreateForm
 
 
 class UserList(ListView):
-    model = Doctor
+
     context_object_name = 'Users'
     template_name = 'userManagement/user_list.html'
+
+    def get_queryset(self):
+        qs1 = Doctor.objects.all()
+        qs2 = User.objects.all()
+        queryset = chain(qs1, qs2)
+        return queryset
 
 
 class UserDetail(DetailView):
@@ -29,14 +39,17 @@ def user_new(request):
         # form = UserForm(request.POST)
         authuserform = AuthUserCreateForm(request.POST)
         doctorform = DoctorCreateForm(request.POST)
+        print(authuserform, doctorform)
 
         if authuserform.is_valid() and doctorform.is_valid():
+
             user = authuserform.save()            
             doctor = doctorform.save(commit=False)
             doctor.user = user
             doctorform.save()
             return HttpResponseRedirect(reverse('userManagement:user_list'))
         else:
+            print(authuserform.is_valid(),doctorform.is_valid())
             return render(request, 'userManagement/user_new.html', {'authuserform': authuserform, 'doctorform': doctorform})
     else:
         authuserform = AuthUserCreateForm()

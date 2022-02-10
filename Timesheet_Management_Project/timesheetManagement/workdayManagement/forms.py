@@ -1,8 +1,6 @@
 from datetime import date
 from django import forms
 
-
-
 from workdayManagement.models import Workday
 
 
@@ -18,3 +16,4 @@ class WorkForm(forms.Form):
     class Meta:
         model = Workday
         fields = ('work_date', 'location', 'user', 'time_in', 'time_out', 'hours_code')
+
