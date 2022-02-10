@@ -4,8 +4,9 @@
 {% block content %}
    <form method="post" action="" class="post-form" enctype="multipart/form-data">
         {% csrf_token %}
-        <table>
-           {{ form.as_p }}
+        <table> 
+           {{ authuserform.as_p }}
+           {{ doctorform.as_p }}
         </table>
         <button type="submit" value="Save">Save</button>
         <a href="{% url 'userManagement:user_list' %}" > Cancel </a>
