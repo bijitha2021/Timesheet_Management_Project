@@ -28,6 +28,6 @@ class WorkCreate(CreateView):
 
 class WorkUpdate(UpdateView):
     model = Workday
-    fields = ['work_date', 'location', 'user', 'time_in', 'time_out', 'hours_code']
+    fields = ('work_date', 'location', 'user', 'time_in', 'time_out', 'hours_code')
     template_name = 'workdayManagement/work_update.html'
     success_url = reverse_lazy('workdayManagement:work_list')
