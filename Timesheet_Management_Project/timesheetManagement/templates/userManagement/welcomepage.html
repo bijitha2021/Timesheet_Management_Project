@@ -1,0 +1,15 @@
+{% extends '../base_timesheet.html' %}
+
+{% block title %}Time Sheet Managementt{% endblock title %}
+
+{% block content %}
+    <a href="{% url 'userManagement:user_list' %}">Doctors</a><br>
+    <a href="{% url 'userManagement:user_new' %}">Add Doctor</a><br><br>
+
+    <a href="{% url 'workdayManagement:work_list' %}">Work Data </a><br>
+    <a href="{% url 'workdayManagement:work_new' %}">Add Work Day </a><br><br>
+
+
+
+
+{% endblock content %}

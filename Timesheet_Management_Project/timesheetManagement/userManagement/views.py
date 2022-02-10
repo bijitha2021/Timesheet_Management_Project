@@ -79,3 +79,6 @@ class UserUpdate(UpdateView):
     form_class = UserForm
     template_name = 'userManagement/user_update.html'
     success_url = reverse_lazy('userManagement:user_list')
+
+def home_view(request):
+    return render(request, 'userManagement/welcomepage.html')
