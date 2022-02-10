@@ -14,9 +14,9 @@ class UserForm(forms.Form):
     image = forms.ImageField(required=False)
 
 
-class Meta:
-    model = Doctor
-    fields = ('firstname', 'lastname', 'email', 'password1', 'password2', 'description', 'image')
+    class Meta:
+        model = Doctor
+        fields = ('firstname', 'lastname', 'email', 'password1', 'password2', 'description', 'image')
 
 
 class AuthUserCreateForm(UserCreationForm):

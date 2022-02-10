@@ -1,0 +1,18 @@
+{% extends '../base_timesheet.html' %}
+
+{% block title %}Workday List{% endblock title %}
+
+{% block content %}
+    {% if user %}<a href="{% url 'workdayManagement:work_new' %}">Add Workday</a>{% endif %}
+    {% if object_list %}
+        <table>
+        {% for work in object_list %}
+            <tr><td>&nbsp;&nbsp;&nbsp;</td><td>{{work.location}}</td><td>&nbsp;</td> <td>{{work.user}}</td>
+        {% endfor %}
+        </table>
+    {% else %}
+        <p>No workdays available.</p>
+    {% endif %}
+{% endblock content %}
+
+
