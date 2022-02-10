@@ -20,13 +20,13 @@ class Meta:
 
 
 class AuthUserCreateForm(UserCreationForm):
-    firstname = forms.CharField(max_length=30, required=False)
-    lastname = forms.CharField(max_length=30, required=False)
+    first_name = forms.CharField(max_length=30, required=False)
+    last_name = forms.CharField(max_length=30, required=False)
     email = forms.EmailField(max_length=254)
-    password = forms.CharField(max_length=30, required=False)
+#     password = forms.CharField(max_length=30, required=False) # We don't need this since UserCreationForm has password1 and password2 already .. but does not have first name, last name and email.. so those fields makes sense .
     class Meta:
         model = User
-        fields = ('firstname', 'lastname', 'email', 'password', 'username','is_superuser','is_staff','is_active','date_joined')
+        fields = ('first_name', 'last_name', 'email', 'password', 'username','is_superuser','is_staff','is_active','date_joined')
 
 
 class DoctorCreateForm(forms.ModelForm):
