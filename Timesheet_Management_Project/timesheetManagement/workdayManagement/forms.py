@@ -4,7 +4,7 @@ from django import forms
 from workdayManagement.models import Workday
 
 
-class WorkForm(forms.Form):
+class WorkForm(forms.ModelForm):
 
     work_date = forms.DateField()
     location = forms.CharField(max_length=30, required=False)

@@ -5,18 +5,14 @@
 {% block content %}
 
     {% if object_list %}
-        <table>
+
         {% for user in object_list %}
-            <tr><td><img src="{{user.image.url}}" width="120">
-
-           {{user.username}}</td></tr>
 
 
-
-
+            <tr><td><img src="{{user.image.url}}" width="100"></td><td> {{user.description}}</td></tr><br><br
 
         {% endfor %}
-        </table>
+
     {% else %}
         <p>No Users are available.</p>
     {% endif %}

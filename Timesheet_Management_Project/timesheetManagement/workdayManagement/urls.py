@@ -7,4 +7,5 @@ urlpatterns = [
     path('', views.WorkList.as_view(), name='work_list'),
     path('new/', views.WorkCreate.as_view(), name='work_new'),
     path('<int:pk>/update', views.WorkUpdate.as_view(), name='work_update'),
+    # path('<int:work_id>/update', views.work_update, name='work_update'),
 ]

@@ -22,11 +22,11 @@ class UserList(ListView):
     template_name = 'userManagement/user_list.html'
 
     def get_queryset(self):
-        qs1 = Doctor.objects.all()
-        qs2 = User.objects.all()
-        queryset = chain(qs1, qs2)
+        queryset = Doctor.objects.select_related('user')
+        print(queryset.query)
         return queryset
 
+    
 
 class UserDetail(DetailView):
     model = Doctor

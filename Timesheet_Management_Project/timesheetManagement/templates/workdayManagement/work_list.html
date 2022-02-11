@@ -5,9 +5,12 @@
 {% block content %}
     {% if user %}<a href="{% url 'workdayManagement:work_new' %}">Add Workday</a>{% endif %}
     {% if object_list %}
-        <table>
+        <table border="1">
+            <tr bgcolor="yellow"><td >Work Date</td><td >Location</td><td >Time In</td>
+            <td >Time Out</td><td>Hours Code</td></tr>
         {% for work in object_list %}
-            <tr><td>&nbsp;&nbsp;&nbsp;</td><td>{{work.location}}</td><td>&nbsp;</td> <td>{{work.user}}</td>
+            <tr><td><a href="{% url 'workdayManagement:work_update' user.id %}">{{work.work_date}}</a></td><td>{{work.location}}</td><td>{{work.time_in}}</td>
+            <td>{{work.time_out}}</td><td>{{work.hours_code}}</td>
         {% endfor %}
         </table>
     {% else %}
