@@ -1,14 +1,15 @@
-from datetime import date
+import datetime
 from django import forms
+from django.core.exceptions import ValidationError
 
 from workdayManagement.models import Workday
 
 
 class WorkForm(forms.ModelForm):
 
-    work_date = forms.DateField()
-    location = forms.CharField(max_length=30, required=False)
-    user = forms.CharField(max_length=30, required=False)
+    work_date = forms.DateField(initial=datetime.date.today)
+    location = forms.CharField(max_length=30, required=True)
+    user = forms.CharField(max_length=30, required=True)
     time_in = forms.TimeField()
     time_out = forms.TimeField()
     hours_code = forms.CharField(max_length=5)

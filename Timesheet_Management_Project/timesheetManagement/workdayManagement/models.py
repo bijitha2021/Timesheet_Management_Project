@@ -22,6 +22,16 @@ class Workday(models.Model):
     time_out=models.TimeField()
     hours_code=models.CharField(max_length=5)
 
+    def clean(self, *args, **kwargs):
+        from django.core.exceptions import ValidationError
+        if self.time_out < self.time_in:
+            raise ValidationError("Time_out cannot be less than Time_in")
+        super().clean(*args, **kwargs)
+
+    def save(self, *args, **kwargs):
+        self.full_clean()
+        super().save(*args, **kwargs)
+
 
 
 

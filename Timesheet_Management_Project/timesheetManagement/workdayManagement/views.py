@@ -15,6 +15,8 @@ from workdayManagement.models import Workday
 from workdayManagement.forms import WorkForm
 
 
+
+
 class WorkList(ListView):
     model = Workday
     context_object_name = 'Work'
@@ -27,6 +29,8 @@ class WorkCreate(CreateView):
     fields = ('work_date', 'location', 'user', 'time_in', 'time_out', 'hours_code')
     template_name = 'workdayManagement/work_new.html'
     success_url = reverse_lazy('workdayManagement:work_list')
+
+
 
 class WorkUpdate(UpdateView):
     model = Workday
