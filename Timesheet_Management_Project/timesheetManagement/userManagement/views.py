@@ -18,7 +18,7 @@ from userManagement.forms import AuthUserCreateForm, DoctorCreateForm
 
 class UserList(ListView):
 
-    context_object_name = 'Users'
+    context_object_name = 'Users' # use all lower case, that's industry norms for naming contextobjectname
     template_name = 'userManagement/user_list.html'
 
     def get_queryset(self):
