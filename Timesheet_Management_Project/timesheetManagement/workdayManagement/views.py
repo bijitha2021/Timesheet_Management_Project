@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db.models import Model
 from django.forms import ModelForm
 from django.shortcuts import render
@@ -18,10 +19,10 @@ from workdayManagement.forms import WorkForm
 
 
 class WorkList(ListView):
-    model = Workday
+    #model = Workday
     context_object_name = 'Work'
     template_name = 'workdayManagement/work_list.html'
-
+    queryset = Workday.objects.select_related('user')
 
 class WorkCreate(CreateView):
     model = Workday

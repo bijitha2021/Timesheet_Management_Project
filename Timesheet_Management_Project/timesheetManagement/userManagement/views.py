@@ -23,7 +23,6 @@ class UserList(ListView):
 
     def get_queryset(self):
         queryset = Doctor.objects.select_related('user')
-        print(queryset.query)
         return queryset
 
     
